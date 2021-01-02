@@ -9,6 +9,7 @@ import {
   StatusBar,
   KeyboardAvoidingView,
   TextInput,
+  TouchableOpacity,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -40,7 +41,23 @@ class App extends Component {
             autoCapitalize="none"
             autoCorrect={false}
             underlineColorAndroid="transparent"
+            onSubmitEditing={() => this.passwordInput.focus()}
           />
+          <TextInput
+            placeholder="Password"
+            placeholderTextColor="rgba(255,255,255,0.6)"
+            returnKeyType="go"
+            secureTextEntry
+            style={styles.input}
+            underlineColorAndroid="transparent"
+            ref={input => (this.passwordInput = input)}
+          />
+          <TouchableOpacity onPress={() => {}} style={styles.button}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}} style={styles.buttonLupa}>
+            <Text style={styles.buttonText}>Lupa Password</Text>
+          </TouchableOpacity>
         </KeyboardAvoidingView>
       </View>
     );
@@ -88,9 +105,26 @@ const styles = StyleSheet.create({
     color: '#fff',
     borderRadius: 10,
     fontSize: 16,
-    borderWidth: 3,
+    borderWidth: 2,
     borderColor: '#fff',
     textAlign: 'center',
+  },
+  button: {
+    height: 40,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(176,21,19,0.8)',
+    borderRadius: 10,
+    borderColor: 'rgba(176,21,19,1)',
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#fff',
+    fontWeight: '700',
+  },
+  buttonLupa: {
+    height: 40,
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
   },
 });
 
