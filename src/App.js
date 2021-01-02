@@ -7,6 +7,8 @@ import {
   ImageBackground,
   Dimensions,
   StatusBar,
+  KeyboardAvoidingView,
+  TextInput,
 } from 'react-native';
 
 const {width, height} = Dimensions.get('window');
@@ -26,6 +28,20 @@ class App extends Component {
             </Text>
           </View>
         </ImageBackground>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : null}
+          style={styles.keyboardContainer}>
+          <TextInput
+            placeholder="Username"
+            placeholderTextColor="rgba(255,255,255,0.6)"
+            returnKeyType="next"
+            keyboardType="email-address"
+            style={styles.input}
+            autoCapitalize="none"
+            autoCorrect={false}
+            underlineColorAndroid="transparent"
+          />
+        </KeyboardAvoidingView>
       </View>
     );
   }
@@ -56,6 +72,25 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     marginTop: 20,
+  },
+  keyboardContainer: {
+    padding: 20,
+    position: 'absolute',
+    left: 30,
+    right: 30,
+    bottom: 30,
+  },
+  input: {
+    height: 50,
+    marginBottom: 10,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    paddingHorizontal: 10,
+    color: '#fff',
+    borderRadius: 10,
+    fontSize: 16,
+    borderWidth: 3,
+    borderColor: '#fff',
+    textAlign: 'center',
   },
 });
 
